@@ -2,6 +2,8 @@
 import './App.css';
 import CharacterGallery from "./components/CharacterGallery";
 import Header from "./components/Header";
+import {ChangeEvent, useState} from "react";
+import ActionBar from "./components/ActionBar";
 
 
 export default function App() {
@@ -679,11 +681,17 @@ export default function App() {
     ]
   }
 
+  const [text, setText] = useState("")
+
+  function onChange(value: string) {
+    setText(value)
+  }
+
   return (
     <div className="App">
 
       <Header />
-
+      <ActionBar text={text} onTextChange={onChange}/>
       <CharacterGallery characters={charactersResponse.results} />
 
     </div>
