@@ -14,9 +14,13 @@ export default function App() {
     //    wert, setter     zum speichern von dynamischen Daten(user input, daten von einer api) userState(initialWert)
     const [searchText, setSearchText] = useState("")
 
-
-    useEffect(() => {
+    // useEffect nutzten wir um gezielt/zu einem bestimmtet Zeitpunkt code auszuführen (Netzwerk Request)
+    useEffect(
+        //Die Funktione/code der ausgeführt werden soll
+        () => {
         loadAllCharacters();
+
+        // dependency Array damit geben wir an WANN der Code ausgeführt werden soll z.B. [] = einmal ganz am Anfang
     }, [])
 
     // useEffect(
@@ -33,11 +37,17 @@ export default function App() {
     }
 
     function loadAllCharacters() {
-        axios.get("https://rickandmortyapi.com/api/characterfddf")
+        //axios für alle Netzwerk Request
+        // .get Http Get Request  in den klammern kommt die URL
+        axios.get("https://rickandmortyapi.com/api/character")
+            //Wenn der Request erfolgreich war dann .then, wir geben eine Funktion an die ausgeführt wird als Parameter bekommen wir Response
             .then((response) => {
+                // Wir speichern die INformationen die im Response Body stehen ab
                 setCharacters(response.data.results)
             })
+            //.catch für den Fehlerfall
             .catch((reason) => {
+                //vorerst nur eine Konsolenausgabe    später Fehlermeldung für den Nutzer
                 console.error(reason)
             })
     }
