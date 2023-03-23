@@ -42,7 +42,7 @@ export default function App() {
         axios.get("https://rickandmortyapi.com/api/character")
             //Wenn der Request erfolgreich war dann .then, wir geben eine Funktion an die ausgeführt wird als Parameter bekommen wir Response
             .then((response) => {
-                // Wir speichern die INformationen die im Response Body stehen ab
+                // Wir speichern die Informationen die im Response Body stehen ab
                 setCharacters(response.data.results)
             })
             //.catch für den Fehlerfall
