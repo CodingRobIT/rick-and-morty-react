@@ -1,19 +1,22 @@
 import {ChangeEvent} from "react";
 
 type ActionBarProps = {
-    text: string,
-    onTextChange: (value: string) => void
+    inputText: string,
+    onChange: (value: string) => void
 }
 export default function ActionBar(props: ActionBarProps) {
 
+    //Wird aufgerufen wenn der Nutzer was eintippt
     function onTextChange(event: ChangeEvent<HTMLInputElement>) {
-        props.onTextChange(event.target.value)
+        //Die Callback Funktion wird aufgerufen mit dem Wert den der Nutzer eingetippt hat(event.target.value)
+        props.onChange(event.target.value)
     }
 
     return (
         <div>
-            <p>{props.text}</p>
-            <input value={props.text} onChange={onTextChange}/>
+            <p>{props.inputText}</p>
+            {/* value: Was wird im input Feld angezeigt? onChange: Was soll passieren wenn der nutzer was eintippt? */}
+            <input value={props.inputText} onChange={onTextChange}/>
         </div>
     )
 }
