@@ -73,12 +73,12 @@ export default function App() {
             {filteredCharacters.length === 0 && <p>No Character found!</p>}
 
 
-            {/*Wurden Charactere gefunden?*/}
-            {filteredCharacters.length > 0
-                // Dann zeige CharacterGallery
-                ? <CharacterGallery characters={filteredCharacters}/>
-                // Sonst zeige Fehlermeldung
-                : <p>No Character found!</p>}
+            {/*/!*Wurden Charactere gefunden?*!/*/}
+            {/*{filteredCharacters.length > 0*/}
+            {/*    // Dann zeige CharacterGallery*/}
+            {/*    ? <CharacterGallery characters={filteredCharacters}/>*/}
+            {/*    // Sonst zeige Fehlermeldung*/}
+            {/*    : <p>No Character found!</p>}*/}
         </div>
     );
 }
