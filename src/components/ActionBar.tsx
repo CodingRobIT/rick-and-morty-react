@@ -14,9 +14,10 @@ export default function ActionBar(props: ActionBarProps) {
 
     return (
         <div>
-            <p>{props.inputText}</p>
+            <br/>
             {/* value: Was wird im input Feld angezeigt? onChange: Was soll passieren wenn der nutzer was eintippt? */}
             <input value={props.inputText} onChange={onTextChange}/>
+            <br/>
         </div>
     )
 }

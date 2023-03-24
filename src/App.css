@@ -3,4 +3,6 @@
   background-color: #24282f;
 }
 
-
+.noCharacterFound {
+  color: cadetblue;
+}
