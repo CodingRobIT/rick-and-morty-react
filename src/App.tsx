@@ -23,6 +23,8 @@ export default function App() {
         // dependency Array damit geben wir an WANN der Code ausgeführt werden soll z.B. [] = einmal ganz am Anfang
     }, [])
 
+
+
     // useEffect(
     //     loadAllCharacters
     // , [])
@@ -36,21 +38,28 @@ export default function App() {
         setSearchText(value)
     }
 
+
+
+
     function loadAllCharacters() {
-        //axios für alle Netzwerk Request
-        // .get Http Get Request  in den klammern kommt die URL
-        axios.get("https://rickandmortyapi.com/api/character")
-            //Wenn der Request erfolgreich war dann .then, wir geben eine Funktion an die ausgeführt wird als Parameter bekommen wir Response
-            .then((response) => {
-                // Wir speichern die Informationen die im Response Body stehen ab
-                setCharacters(response.data.results)
-            })
-            //.catch für den Fehlerfall
-            .catch((reason) => {
-                //vorerst nur eine Konsolenausgabe    später Fehlermeldung für den Nutzer
-                console.error(reason)
-            })
+        let allCharacters: any[] | ((prevState: Character[]) => Character[]) = [];
+        let numPages = 34; // Anzahl der Seiten mit Ergebnissen
+
+        for (let page = 1; page <= numPages; page++) {
+            axios.get("https://rickandmortyapi.com/api/character?page=" + page)
+                .then((response) => {
+                    // @ts-ignore
+                    allCharacters = [...allCharacters, ...response.data.results];
+                    if (page === numPages) {
+                        setCharacters(allCharacters);
+                    }
+                })
+                .catch((error) => {
+                    console.error(error);
+                });
+        }
     }
+
 
     return (
         <div className="App">
